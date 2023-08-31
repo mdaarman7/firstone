@@ -11,6 +11,7 @@ struct reservationName
  
 int main()
 {
+    printf("hellow i am here why to fear :)");
     char a=219, roomChoice;
     FILE *ptr1;
     int i=0, value=0, choice=0,RoomType;
