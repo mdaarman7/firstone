@@ -38,9 +38,9 @@ int main()
     printf("\n\t\t                                 --------------------------------------------------");
     printf("\n\n\n\n\n\n\n");
     printf("\n\t\t                                            ------------------------------");
-    printf("\n\t\t                                            |         1. Data            |");
+    printf("\n\t\t                                            |         1. Data info           |");
     printf("\n\t\t                                            ------------------------------");
-    printf("\n\t\t                                            |         2. Make Reservation     |");
+    printf("\n\t\t                                            |         2. Reservation     |");
     printf("\n\t\t                                            ------------------------------");
     printf("\n\t\t                                            |         3. Cancellation    |");
     printf("\n\t\t                                            ------------------------------");
