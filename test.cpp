@@ -40,7 +40,7 @@ int main()
     printf("\n\t\t                                            ------------------------------");
     printf("\n\t\t                                            |         1. Data            |");
     printf("\n\t\t                                            ------------------------------");
-    printf("\n\t\t                                            |         2. Reservation     |");
+    printf("\n\t\t                                            |         2. Make Reservation     |");
     printf("\n\t\t                                            ------------------------------");
     printf("\n\t\t                                            |         3. Cancellation    |");
     printf("\n\t\t                                            ------------------------------");
