@@ -8,7 +8,7 @@ struct reservationName
 		char address[100];
 		int roomNumber;
 		char checkin[25];
-		char checkout[25];
+		int noOfDays;
 		
 	}reservationArray[100], reservationVariable,keep[100];
 void roominput()
@@ -19,7 +19,7 @@ int main()
 {
 	char a=219, roomChoice;
 	FILE *ptr1;
-	int i=0, value=0, choice=0,RoomType;
+	int i=0, j=0, value=0, choice=0,RoomType;
 	
 	// Loading Code
 	
@@ -86,9 +86,14 @@ int main()
 			// Scope for Filling Customers Detail
 			do
 			{
+                if(roomChoice=='y' || roomChoice=='Y')
+                {
+                    j++;
+                }
 				printf("- - - - - Room Type- - - - -");
 	            printf("\n1. AC(Air Conditioner) Room");
 	            printf("\n2. Deluxe Room\n");
+                printf("\n3. Normal Room\n");
 	            scanf("%d",&RoomType);
 	            switch(RoomType)
 				{
@@ -97,18 +102,18 @@ int main()
 						printf("\n Enter Your Name: ");
 						gets(reservationVariable.name);
 						printf("\n Enter Your Phone Number: ");
-						scanf("%lld", &reservationVariable.phone);
+						scanf("%d", &reservationVariable.phone);
 						fflush(stdin);
 						printf("\n Enter Your Address: ");
 						gets(reservationVariable.address);
 						printf("\n Enter how many room do you want to Reserve: ");
 						scanf("%d", &reservationVariable.roomNumber);
-						// Writing Data to the File
 						fflush(stdin);
 						printf("\n Enter checkin Date: ");
-						gets(reservationVariable.checkin);
-						printf("\n Enter checkout Date: ");
-						gets(reservationVariable.checkout);
+						gets(reservationVariable.checkin);  
+						printf("\n Enter no. of days you will stay: ");
+						gets(reservationVariable.noOfDays);
+                        reservationArray[j]=reservationVariable;
 						
 						break;
 	           		case 2:
@@ -116,7 +121,7 @@ int main()
 						printf("\n Enter Your Name: ");
 						gets(reservationVariable.name);
 						printf("\n Enter Your Phone Number: ");
-						scanf("%lld", &reservationVariable.phone);
+						scanf("%d", &reservationVariable.phone);
 						fflush(stdin);
 						printf("\n Enter Your Address: ");
 						gets(reservationVariable.address);
@@ -125,31 +130,51 @@ int main()
 						fflush(stdin);
 						printf("\n Enter checkin Date: ");
 						gets(reservationVariable.checkin);
-						printf("\n Enter checkout Date: ");
-						gets(reservationVariable.checkout);
-						
+                        printf("\n Enter no. of days you will stay: ");
+                        gets(reservationVariable.noOfDays);
+                        reservationArray[j]=reservationVariable;
 
 					break;
+                    case 3:
+                        fflush(stdin);
+                        printf("\n Enter Your Name: ");
+                        gets(reservationVariable.name);
+                        printf("\n Enter Your Phone Number: ");
+                        scanf("%d", &reservationVariable.phone);
+                        fflush(stdin);
+                        printf("\n Enter Your Address: ");
+                        gets(reservationVariable.address);
+                        printf("\n Enter how many room do you want to Reserve: ");
+                        scanf("%d", &reservationVariable.roomNumber);
+                        fflush(stdin);
+                        printf("\n Enter checkin Date: ");
+                        gets(reservationVariable.checkin);
+                        printf("\n Enter no. of days you will stay: ");
+                        gets(reservationVariable.noOfDays);
+                        reservationArray[j]=reservationVariable;
+                        
+                        break;
 				}
 						printf("\n Reservation Successful.");
 						// Writing Data to the File
-						fwrite(&reservationVariable,sizeof(reservationVariable),1,ptr1);
+						fwrite(&reservationArray,sizeof(reservationArray),1,ptr1);
 						fflush(stdin);
 						// Asking for more Reservarion	 
 						printf("\n Do you want to Reserve more Room...... If Yes press Y");
 						scanf("%c", &roomChoice);
-				}
+            }
 			while(roomChoice=='Y'|| roomChoice=='y');
 				goto flag;
 	            
 	    break;
 		case 4:
+            rewind(ptr1);
 			for(i=0;i<=5;i++)
 			{
 				fread(&keep[i],sizeof(reservationVariable),1,ptr1);
 						printf("\n Name: ");
 						puts(reservationVariable.name);
-						printf("\n Your Phone Number: %lld", reservationVariable.phone);
+						printf("\n Your Phone Number: %d", reservationVariable.phone);
 						printf("\n Your Address: ");
 						puts(reservationVariable.address);
 						printf("\n Room You Reserved: %d", &reservationVariable.roomNumber);
@@ -185,3 +210,6 @@ int main()
 	
 	return 0;
 }
+
+
+
